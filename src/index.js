@@ -2,11 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Home from './Home';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
+import AuthorBox from './Author';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    (<Router>
+            <App>
+                <Route exact path="/" component={Home} />
+                <Route path="/author" component={AuthorBox}/>
+                <Route path="/book" />
+            </App>
+    </Router>),
+     document.getElementById('root')
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
